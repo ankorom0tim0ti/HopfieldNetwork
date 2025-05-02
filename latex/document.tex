@@ -1,0 +1,85 @@
+\documentclass{ltjsarticle}
+
+% パッケージの読み込み
+\usepackage{graphicx}  % 画像挿入用
+\usepackage{amsmath}  % 数式用
+\usepackage{hyperref} % ハイパーリンク用
+\usepackage{geometry} % ページレイアウト調整用
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[edges]{forest}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{listings,jvlisting}
+\usetikzlibrary{arrows.meta, positioning}
+
+% ページの余白を調整
+\geometry{top=10mm,bottom=25mm,left=10mm,right=10mm}
+
+% ハイパーリンクの色設定
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan
+}
+
+% ヘッダー・フッターの設定
+\pagestyle{fancy}
+\fancyhf{} % 既存のヘッダー・フッターをリセット
+% \fancyfoot[R]{\includegraphics[width=2cm]{images/logo.png}} % フッター右下にロゴを配置
+\fancyfoot[C]{\thepage}
+
+\newtcbox{\code}[1][]{
+  colback=gray!10!white,
+  colframe=gray!20!white,
+  boxrule=1pt,
+  left=0mm,right=0mm,top=0mm,bottom=0mm,
+  box align=base,
+  nobeforeafter,
+  fontupper=\ttfamily
+}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0pt,
+xleftmargin=30pt,
+numbersep=10pt,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  lineskip=-0.5ex
+}
+
+
+% ドキュメント情報
+\title{知能機械情報学 レポート課題1}
+\author{03240258 機械情報工学科B4 有村 東真}
+\date{2025年5月21日}
+
+\newcommand{\imgwidthtwo}{0.36\linewidth}
+\newcommand{\imgwidththree}{0.54\linewidth}
+
+
+\begin{document}
+
+% 表紙
+\maketitle
+\newpage
+
+\setcounter{tocdepth}{3}
+\tableofcontents % 目次
+
+\newpage
+\end{document}
