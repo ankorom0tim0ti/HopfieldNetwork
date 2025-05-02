@@ -28,7 +28,8 @@ im_v = im.reshape(-1)
 num_W = int(len(im_v) * noise_ratio)
 indices = np.random.choice(len(im_v), num_W, replace=False)  # ランダムな位置を選ぶ
 for i in indices:
-        im_v[i] = B if np.random.randint(0,1) == B else W
+        rand_value = np.random.randint(0,2)
+        im_v[i] = B if rand_value == B else W
 
 
 

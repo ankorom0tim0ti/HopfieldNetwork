@@ -18,28 +18,13 @@ if file_name[-4:] != ".png":
 
 
 image_array = np.array([
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-    [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-    [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-    [W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, W, W, W, W, W, W, W, W, W, W, W, W, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
-    [B, B, B, B, B, B, B, B, W, W, W, W, B, B, B, B, B, B, B, B],
+    [B, W, B, W, B],
+    [W, B, W, B, W],
+    [B, W, B, W, B],
+    [W, B, W, B, W],
+    [B, W, B, W, B]
 ], dtype=np.uint8)
 
 image = Image.fromarray(image_array, mode='L')
 
-image.save(f"{file_name[:-4]}-h{len(image_array[0])}-w{len(image_array)}.png")
+image.save(f"../images/{file_name[:-4]}-h{len(image_array[0])}-w{len(image_array)}.png")

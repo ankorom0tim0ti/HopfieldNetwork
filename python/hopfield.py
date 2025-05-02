@@ -55,7 +55,7 @@ def memorize(input_files, self_connection_flag, output_file_name):
         x[i] = np.where(im_b_v> 0, 1, -1)
         
     weight = x.T @ x / len(input_files)
-    if self_connection_flag:
+    if not self_connection_flag:
         for i in range(0, size_data):
             weight[i][i] = 0
     np.savetxt(f'weights/{output_file_name}', weight, fmt='%.3f')
@@ -132,9 +132,9 @@ def main():
         weight_file = sys.argv[4]
         sync_mode = sys.argv[2]
         if sync_mode == "-syn": # Sync
-            recall(input_file, True, weight_file, f"{input_file[:-4]}-{weight_file[:-4]}{sync_mode}-result.png")
+            recall(input_file, True, weight_file, f"{input_file[:-4]}-{weight_file[:-4]}{sync_mode}-result-{time.strftime('%Y-%m-%d_%H-%M-%S')}.png")
         else: # sync_mode: "-asyn" (Async)
-            recall(input_file, False, weight_file, f"{input_file[:-4]}-{weight_file[:-4]}{sync_mode}-result.png")
+            recall(input_file, False, weight_file, f"{input_file[:-4]}-{weight_file[:-4]}{sync_mode}-result-{time.strftime('%Y-%m-%d_%H-%M-%S')}.png")
 
 if __name__ == '__main__':
     main()
