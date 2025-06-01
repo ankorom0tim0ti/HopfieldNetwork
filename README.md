@@ -39,12 +39,12 @@ python image_noise_adder.py image-hxxx-wxxx.png 0.1 # image-hxxx-wxxx-noise0.1.p
 ```
 9. `python`ディレクトリで以下のコマンドを実行して学習し、その結果として`weights`ディレクトリに得られる重み行列を格納した`.npy`ファイルを出力する。引数として与えられる`-snc`を`-sc`に変えることで自己結合を許容する
 ```
-python test.py -m -snc image-hxxx-wxxx.png image.npy # image.npy will be created as a result of the execution at weights directory
+python hopfield.py -m -snc image-hxxx-wxxx.png image.npy # image.npy will be created as a result of the execution at weights directory
 ```
 
 10. `python`ディレクトリで以下のコマンドを実行して想起し、その結果として`results`ディレクトリに得られる画像`.png`を出力する。引数として与えられる`-syn`を`-asyn`に変えることで同期更新を非同期更新にすることができる
 ```
-python test.py -r -syn image-hxxx-wxxx-noise0.1.png image.npy # image-hxxx-wxxx-noise0.1-syn-result.png will be created as a result of the execution at results directory
+python hopfield.py -r -syn image-hxxx-wxxx-noise0.1.png image.npy # image-hxxx-wxxx-noise0.1-syn-result.png will be created as a result of the execution at results directory
 ```
 
 11. `python`ディレクトリで以下のコマンドを実行して元の画像と想起された画像の距離(値の違うマスの合計値)をコマンドラインに出力する

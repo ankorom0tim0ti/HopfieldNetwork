@@ -7,7 +7,7 @@ import random
 # Constants
 W = 255
 
-MAX_LOOP = 3000
+MAX_LOOP = 100
 
 OPERATION_MODES = [
     "-m", # Memoraize

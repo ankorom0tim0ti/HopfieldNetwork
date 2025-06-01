@@ -85,11 +85,129 @@ numbersep=10pt,
 \section{ソースコード}
 本課題に取り組むにあたりpythonにおいて以下のコードを作成した
 \begin{itemize}
-  \item \code{hopfield.py}: Hopfield Networkの学習と想起の処理を記述したファイル
+  \item \code{hopfield.py}: Hopfield Networkの学習と想起の処理を記述したコード
   \item \code{image\_create.py}: 入力用の2値画像\code{.png}を作成するコード。配列として画像を定義する
   \item \code{image\_binarizer.py}: カラー画像を入力用の2値画像\code{.png}に変換するコード
   \item \code{image\_noise\_adder.py}: 2値画像に対して指定した割合でノイズを付加するコード
   \item \code{calc\_image\_distance.py}: 学習に使用した画像と想起された画像の差異を調べるコード
 \end{itemize}
-\href{https://github.com/ankorom0tim0ti/HopfieldNetwork}{Github}上で公開している
+ソースコードは\href{https://github.com/ankorom0tim0ti/HopfieldNetwork}{Github}上で公開している。
+\section{画像の学習と想起}
+\subsection{1画像の学習と想起}
+\subsubsection{入力画像}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5.png}
+      \caption{元画像}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5-noise0.05.png}
+      \caption{ノイズ0.05}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5-noise0.1.png}
+      \caption{ノイズ0.1}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5-noise0.15.png}
+      \caption{ノイズ0.15}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5-noise0.2.png}
+      \caption{ノイズ0.2}
+  \end{minipage}
+\end{figure}
+\subsubsection{出力画像}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5.png}
+      \caption{元画像}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../python/results/image_1-h5-w5-noise0.05-image_1-asyn-result-2025-05-27_10-28-01.png}
+      \caption{ノイズ0.05}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../python/results/image_1-h5-w5-noise0.1-image_1-asyn-result-2025-05-27_10-28-02.png}
+      \caption{ノイズ0.1}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../python/results/image_1-h5-w5-noise0.15-image_1-asyn-result-2025-05-27_10-28-02.png}
+      \caption{ノイズ0.15}
+  \end{minipage}
+  \begin{minipage}[b]{0.18\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../python/results/image_1-h5-w5-noise0.2-image_1-asyn-result-2025-05-27_10-28-02.png}
+      \caption{ノイズ0.2}
+  \end{minipage}
+\end{figure}
+\subsubsection{結果}
+基本的には何のノイズ付加率においても元画像を想起できている。この時ノイズ率0.05の場合において元画像から画像が変化していない。
+\newpage
+\subsection{想起性能調査}
+今回作成したHopfield型ネットワークの想起性能を検証するために、1, 2, 4, 6種類の画像を記憶させたネットワークに対して前項図1の画像に対してノイズを加えた画像を入力してその際の正答率や元画像に対する類似度を調査した。
+それぞれの場合に記憶に使用した画像は以下の通りである。
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_1-h5-w5.png}
+      \caption{image\_1}
+  \end{minipage}
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_2-h5-w5.png}
+      \caption{image\_2}
+  \end{minipage}
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_3-h5-w5.png}
+      \caption{image\_3}
+  \end{minipage}
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_4-h5-w5.png}
+      \caption{image\_4}
+  \end{minipage}
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_5-h5-w5.png}
+      \caption{image\_5}
+  \end{minipage}
+  \begin{minipage}[b]{0.16\columnwidth}
+      \centering
+      \includegraphics[width=0.9\columnwidth]{../images/image_6-h5-w5.png}
+      \caption{image\_6}
+  \end{minipage}
+\end{figure}
+この際正答率は、想起した画像が元画像を完全に想起できた試行の全体の試行に対する割合を示し、類似度平均は全試行における想起した画像と元画像の間で異なっている画素の数の平均を示す。
+\begin{center}
+  \captionof{table}{正答率}
+  \begin{tabular}{|l|r|r|r|r|r|r|r|r|r|r|r|r|} \hline
+    学習画像/ノイズ率 & 0.05 & 0.1 & 0.15 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 & 0.8 & 0.9 & 1.0 \\ \hline
+    1画像 & 100 & 100 & 100 & 100 & 100 & 95 & 80 & 95 & 65 & 90 & 55 & 75 \\
+    2画像 & 100 & 95 & 100 & 90 & 100 & 90 & 100 & 100 & 85 & 100 & 55 & 70 \\
+    4画像 & 100  & 100 & 85 & 100 & 90 & 100 & 85 & 80 & 85 & 95 & 25 & 35 \\
+    6画像 & 100 & 95 & 100 & 85 & 80 & 80 & 95 & 85 & 60 & 100 & 10 & 0 \\ \hline
+  \end{tabular}
+  \captionof{table}{想起性能}
+  \begin{tabular}{|l|r|r|r|r|r|r|r|r|r|r|r|r|} \hline
+    学習画像/ノイズ率 & 0.05 & 0.1 & 0.15 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 & 0.8 & 0.9 & 1.0 \\ \hline
+    1画像 & 0 & 0 & 0 & 0 & 0 & 0.05 & 0.2 & 0.05 & 0.4 & 0.1 & 6.35 & 3.85 \\
+    2画像 & 0 & 0.05 & 0 & 0.1 & 0 & 0.1 & 0 & 0 & 0.15 & 0 & 6.45 & 6.3 \\
+    4画像 & 0  & 0 & 0.15 & 0 & 0.1 & 0 & 0.15 & 0.2 & 0.15 & 0.1 & 13.75 & 11.45 \\
+    6画像 & 0 & 0.05 & 0 & 0.15 & 0.2 & 0.2 & 0.05 & 0.15 & 3.4 & 0 & 13.7 & 11 \\ \hline
+  \end{tabular}
+\end{center}
 \end{document}
