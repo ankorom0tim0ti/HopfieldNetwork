@@ -26,7 +26,7 @@ im = np.array(Image.open(f'../images/{file_name}'))
 im_shape = im.shape
 im_v = im.reshape(-1)
 num_W = int(len(im_v) * noise_ratio)
-indices = np.random.choice(len(im_v), num_W, replace=False)  # ランダムな位置を選ぶ
+indices = np.random.choice(len(im_v), num_W, replace=False) 
 for i in indices:
         rand_value = np.random.randint(0,2)
         im_v[i] = B if rand_value == B else W

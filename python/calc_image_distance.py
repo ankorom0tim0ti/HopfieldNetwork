@@ -47,9 +47,7 @@ for i in result_include_keywords:
     output_file_name += i + "_"
 output_file_name = output_file_name.rstrip("_") + ".xlsx"
 
-print(f"出力ファイル名: {output_file_name}")
-print(f"対象 image ファイル数: {len(image_files)}")
-print(f"対象 result ファイル数: {len(result_files)}")
+print(f"output file name: {output_file_name}")
 
 # --- 距離計算と表作成 ---
 distance_matrix = []
@@ -79,4 +77,4 @@ for result_file in result_files:
 df = pd.DataFrame(distance_matrix, columns=image_files, index=result_files)
 os.makedirs("excel", exist_ok=True)
 df.to_excel("excel/" + output_file_name)
-print("出力Excelファイルを保存しました！")
+print("Output excel file was successfuly saved")
